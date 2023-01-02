@@ -1,0 +1,4 @@
+animate()
+
+// initBattle()
+// animateBattle()
