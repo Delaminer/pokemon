@@ -1,15 +1,27 @@
-
 const canvas = document.querySelector("canvas");
-canvas.width = 1024;
-canvas.height = 576;
-
+canvas.width = 1024 / 4;
+canvas.height = 576 / 4;
 
 const ctx = canvas.getContext("2d");
 ctx.fillStyle = "lightblue";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-const backgroundImage = new Image();
-backgroundImage.src = "./img/map.png";
+sceneManager.registerMapManager(mapManager);
+sceneManager.registerBattleManager(battleManager);
 
-const foregroundImage = new Image();
-foregroundImage.src = "./img/map-foreground.png";
+const main = () => {
+  window.requestAnimationFrame(main);
+  sceneManager.draw();
+};
+main();
+
+document.getElementById("fullscreen-enter").addEventListener("click", () => {
+  if (canvas.webkitRequestFullScreen) {
+    canvas.webkitRequestFullScreen();
+  } else {
+    canvas.mozRequestFullScreen();
+  }
+});
+document.getElementById("fullscreen-ignore").addEventListener("click", () => {
+  document.getElementById("fullscreen-settings").style.display = "none";
+});
